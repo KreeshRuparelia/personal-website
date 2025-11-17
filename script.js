@@ -47,7 +47,7 @@ const projectData = [
   },
   {
     id: "3",
-    title: "Weather Forecast Dashboard",
+    title: "PomoTask",
     image: "pomodoro.jpg",
     site: "https://pomotask-eta.vercel.app/",
     fullDescription: `PomoTask is an interactive web application that helps you focus by following the Pomodoro technique, segmenting work time into focus sessions, short breaks, and long breaks. The Pomodoro technique has been scientifically shown to boost productivity and offer mood benefits. Built with React, the platform features Pomodoro timers that automatically transition between focus and break phases. The system tracks the completed focus sessions and schedules long breaks after every fourth session as per the technique. Key features include:
@@ -59,7 +59,7 @@ const projectData = [
 
                       This project demonstrates expertise in building, and deploying interactive React webpages that offer an intuitive user experiences.`,
     tech: ["React", "JavaScript", "HTML", "CSS"],
-    github: "https://github.com/yourusername/weather-dashboard",
+    github: "https://github.com/KreeshRuparelia/PomoTask.git",
   },
 ];
 
