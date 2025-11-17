@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kreesh's Portfolio</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="K.png" type="image/png" />
+    
+  </head>
+  <body>
+    <canvas id="particle-canvas" aria-hidden="true"></canvas>
+    <div class="page">
+      <nav class="navbar">
+        <div class="container nav-inner">
+          <div class="brand">Kreesh Ruparelia</div>
+          <div class="nav-links">
+            <button type="button" class="nav-link" data-scroll-target="home">Home</button>
+            <button type="button" class="nav-link" data-scroll-target="about">About</button>
+            <button type="button" class="nav-link" data-scroll-target="projects">Projects</button>
+            <button type="button" class="nav-link" data-scroll-target="resume">Resume</button>
+            <button type="button" class="nav-link" data-scroll-target="contact">Contact</button>
+          </div>
+          <div class="nav-actions">
+            <button
+              type="button"
+              data-theme-toggle
+              class="theme-toggle"
+              aria-label="Toggle dark mode"
+            >
+              <svg
+                class="icon-light"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="5" />
+                <line x1="12" y1="1" x2="12" y2="3" />
+                <line x1="12" y1="21" x2="12" y2="23" />
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                <line x1="1" y1="12" x2="3" y2="12" />
+                <line x1="21" y1="12" x2="23" y2="12" />
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+              </svg>
+              <svg
+                class="icon-dark"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </nav>
+
+      <section id="home" class="section hero">
+        <div class="container hero-content">
+          <p class="eyebrow">I am</p>
+          <h1>Kreesh Ruparelia</h1>
+          <p class="subtitle">A Software Developer</p>
+        </div>
+      </section>
+
+      <section id="about" class="section section-alt">
+        <div class="container about-grid">
+          <div class="about-text">
+            <div class="section-intro align-left">
+              <h2 class="section-title">About Me</h2>
+            </div>
+            <p>
+              Hello, my name is Kreesh, and I am currently pursuing my undergraduate degree in Computer Science
+              at the University of Toronto. I’m passionate about creating, which is evident in my love for 
+              making apps and websites. I enjoy working on both front-end and back-end, and have experience 
+              creating user-friendly and efficient applications.
+            </p>
+            <p>
+              When I'm not working on any projects or completing coursework, you can find me biking, playing tennis,
+              or watching soccer!
+
+            </p>
+          </div>
+          <div>
+            <div class="profile-card">
+              <img
+                src="portrait.JPG"
+                alt="Profile portrait"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section toolkit-section">
+        <div class="container">
+          <div class="section-intro align-left">
+            <p class="eyebrow">My Technical Toolkit</p>
+            <h2 class="section-title">What I Use</h2>
+          </div>
+          <div class="toolkit-grid">
+            <div class="toolkit-stack">
+              <article class="toolkit-card">
+                <h3>Languages</h3>
+                <div class="toolkit-pill-list">
+                  <span class="toolkit-pill">HTML</span>
+                  <span class="toolkit-pill">CSS</span>
+                  <span class="toolkit-pill">JavaScript</span>
+                  <span class="toolkit-pill">TypeScript</span>
+                  <span class="toolkit-pill">SQL</span>
+                  <span class="toolkit-pill">Swift</span>
+                  <span class="toolkit-pill">Python</span>
+                  <span class="toolkit-pill">Java</span>
+                  <span class="toolkit-pill">C</span>
+                  <span class="toolkit-pill">C#</span>
+                  <span class="toolkit-pill">Objective C</span>
+                  <span class="toolkit-pill">Bash</span>
+                  <span class="toolkit-pill">RStudio</span>
+                  <span class="toolkit-pill">Power BI</span>
+                  
+                </div>
+              </article>
+              <article class="toolkit-card">
+                <h3>Frameworks & Tools</h3>
+                <div class="toolkit-pill-list">
+                  <span class="toolkit-pill">React</span>
+                  <span class="toolkit-pill">Node.js</span>
+                  <span class="toolkit-pill">Express</span>
+                  <span class="toolkit-pill">Angular</span>
+                  <span class="toolkit-pill">Next.js</span>
+                  <span class="toolkit-pill">Vue</span>
+                  <span class="toolkit-pill">Bootstrap</span>
+                  <span class="toolkit-pill">MongoDB</span>
+                  <span class="toolkit-pill">Firebase</span>
+                  <span class="toolkit-pill">Prisma</span>
+                  <span class="toolkit-pill">.NET</span>
+                  <span class="toolkit-pill">Git</span>
+                  <span class="toolkit-pill">AWS</span>
+                  <span class="toolkit-pill">Jira</span>
+                  <span class="toolkit-pill">Linux</span>
+                </div>
+              </article>
+            </div>
+            <article class="toolkit-card expertise-card">
+              <h3>Expertise</h3>
+              <ul class="expertise-list">
+                <li>Full-Stack Development</li>
+                <li>iOS App Development</li>
+                <li>Android App Development</li>
+                <li>Cloud Deployment & DevOps</li>
+                <li>Agile & Scrum</li>
+                <li>Familiarity with SDLC</li>
+                <li>Systems Programming</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="projects" class="section">
+        <div class="container">
+          <div class="section-intro">
+            <p class="eyebrow">Demos</p>
+            <h2 class="section-title">Projects</h2>
+          </div>
+          <div class="projects-list">
+            <article class="project">
+              <div class="project-media">
+                <img
+                  src="cineco.jpg"
+                  alt="The text CineCo on a red background."
+                  data-project-trigger
+                  data-project-id="1"
+                />
+              </div>
+              <div class="project-body">
+                <h3>CineCo</h3>
+                <p>
+                  CineCo is an iOS application designed to help users manage their movie and TV show collections. 
+                  This includes logging, maintaining a watchlist, searching for reviews, and discovering new content 
+                  to watch through a swipable interface.
+                </p>
+                <div class="project-tech">
+                  <span class="tech-pill">Swift</span>
+                  <span class="tech-pill">SwiftUI</span>
+                  <span class="tech-pill">Firebase</span>
+                  <span class="tech-pill">REST API</span>
+                  <span class="tech-pill">MVVM Architecture</span>
+                </div>
+                <button
+                  type="button"
+                  class="project-link"
+                  data-project-trigger
+                  data-project-id="1"
+                >
+                  Read more →
+                </button>
+              </div>
+            </article>
+
+            <article class="project reverse">
+              <div class="project-media">
+                <img
+                  src="firetruck.jpg"
+                  alt="A fire truck."
+                  data-project-trigger
+                  data-project-id="2"
+                />
+              </div>
+              <div class="project-body">
+                <h3>RapidResponse AI</h3>
+                <p>
+                  A comprehensive emergency response intelligence system that autonomously detects wildfires 
+                  using NASA satellite data and generates complete response plans.
+                </p>
+                <div class="project-tech">
+                  <span class="tech-pill">Python</span>
+                  <span class="tech-pill">React</span>
+                  <span class="tech-pill">Flask</span>
+                  <span class="tech-pill">Mapbox GL</span>
+                  <span class="tech-pill">Multi-Agent AIs</span>
+                  <span class="tech-pill">WebSocket</span>
+                  <span class="tech-pill">REST APIs</span>                  
+                </div>
+                <button
+                  type="button"
+                  class="project-link"
+                  data-project-trigger
+                  data-project-id="2"
+                >
+                  Read more →
+                </button>
+              </div>
+            </article>
+
+            <article class="project">
+              <div class="project-media">
+                <img
+                  src="pomodoro_single.jpg"
+                  alt="A Pomodoro kitchen timer."
+                  data-project-trigger
+                  data-project-id="3"
+                />
+              </div>
+              <div class="project-body">
+                <h3>PomoTask</h3>
+                <p>
+                  PomoTask is an interactive web application that helps you focus by following the Pomodoro technique,
+                  segmenting work time into focus sessions, short breaks, and long breaks. The Pomodoro technique has 
+                  been scientifically shown to boost productivity and offer mood benefits.
+                </p>
+                <div class="project-tech">
+                  <span class="tech-pill">React</span>
+                  <span class="tech-pill">JavaScript</span>
+                  <span class="tech-pill">HTML</span>
+                  <span class="tech-pill">CSS</span>
+                </div>
+                <button
+                  type="button"
+                  class="project-link"
+                  data-project-trigger
+                  data-project-id="3"
+                >
+                  Read more →
+                </button>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <div
+        id="project-modal"
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+      >
+        <div class="modal-content">
+          <button
+            id="modal-close"
+            type="button"
+            class="modal-close"
+            aria-label="Close project details"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+          <h3 id="modal-title" class="section-title modal-title"></h3>
+          <img id="modal-image" class="modal-image" src="" alt="" />
+          <div id="modal-description" class="modal-description"></div>
+          <div id="modal-tech" class="modal-tech"></div>
+          <div class="modal-actions">
+            <a
+              id="modal-site"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="site-btn"
+              hidden
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                width="18"
+                height="18"
+              >
+                <path d="M14 3h7v7" />
+                <path d="M21 3l-10 10" />
+                <path d="M5 12v9h9" />
+              </svg>
+              Visit Site
+            </a>
+            <a
+              id="modal-github"
+              href="#"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="github-btn"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                width="20"
+                height="20"
+              >
+                <path
+                  d="M9 19c-4 1.5-4-2-6-2m12 4v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0018 4.77 5.07 5.07 0 0017.91 1S16.73.65 14 2.48a13.38 13.38 0 00-5 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"
+                />
+              </svg>
+              View on GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <section id="resume" class="section section-alt">
+        <div class="container">
+          <div class="section-intro">
+            <h2 class="section-title">Resume</h2>
+          </div>
+          <div class="resume-frame">
+            <iframe
+              src="resume.pdf"
+              title="Resume PDF"
+            ></iframe>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section contact">
+        <div class="container">
+          <div class="section-intro">
+            <p class="eyebrow">Want to get in touch?</p>
+            <h2 class="section-title">Reach out!</h2>
+          </div>
+          <p>I'm currently seeking 12-16 month internships starting in Summer 2026. <br> 
+            If you're looking for a passionate developer, feel free to say hello!</p>
+          <div class="contact-links">
+            <a
+              class="contact-link"
+              href="https://linkedin.com/in/kreeshruparelia"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor" width="36" height="36">
+                <path
+                  d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 8.75h4v11.5H3zM9 8.75h3.83v1.57h.05c.53-1 1.85-2.06 3.81-2.06 4.08 0 4.83 2.69 4.83 6.19v7.8h-4v-6.91c0-1.65-.03-3.78-2.3-3.78-2.3 0-2.65 1.8-2.65 3.66v7.03H9z"
+                />
+              </svg>
+            </a>
+            <a
+              class="contact-link"
+              href="https://github.com/KreeshRuparelia"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                width="36"
+                height="36"
+              >
+                <path
+                  d="M9 19c-4 1.5-4-2-6-2m12 4v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0018 4.77 5.07 5.07 0 0017.91 1S16.73.65 14 2.48a13.38 13.38 0 00-5 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"
+                />
+              </svg>
+            </a>
+            <a
+              class="contact-link"
+              href="mailto:kreesh.ruparelia@mail.utoronto.ca?subject=Reaching out!&body=Hello Kreesh, I'd like to get in touch with you."
+              aria-label="Email"
+            >
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                width="36"
+                height="36"
+              >
+                <rect x="3" y="5" width="18" height="14" rx="2" ry="2" />
+                <polyline points="3,7 12,13 21,7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
