@@ -70,6 +70,7 @@ const modalDescription = document.getElementById("modal-description");
 const modalTech = document.getElementById("modal-tech");
 const modalGithub = document.getElementById("modal-github");
 const modalSite = document.getElementById("modal-site");
+const modalActions = document.querySelector(".modal-actions");
 const modalClose = document.getElementById("modal-close");
 
 function closeModal() {
@@ -86,16 +87,28 @@ function openModal(projectId) {
   modalDescription.textContent = project.fullDescription;
   modalTech.innerHTML = project.tech.map((tech) => `<span>${tech}</span>`).join("");
   modalGithub.href = project.github;
-  if (modalSite) {
-    if (project.site) {
-      modalSite.href = project.site;
-      modalSite.hidden = false;
-    } else {
-      modalSite.hidden = true;
-    }
-  }
+  handleSiteButton(project);
   modal.classList.add("open");
   document.body.classList.add("modal-open");
+}
+
+function handleSiteButton(project) {
+  if (!modalSite || !modalActions) return;
+
+  const shouldRender = Boolean(project.site) && project.id !== "1";
+  if (shouldRender) {
+    modalSite.href = project.site;
+    modalSite.hidden = false;
+    if (!modalActions.contains(modalSite)) {
+      modalActions.insertBefore(modalSite, modalGithub);
+    }
+  } else {
+    modalSite.hidden = true;
+    modalSite.removeAttribute("href");
+    if (modalActions.contains(modalSite)) {
+      modalSite.remove();
+    }
+  }
 }
 
 modal.addEventListener("click", (event) => {
