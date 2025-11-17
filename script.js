@@ -25,6 +25,7 @@ const projectData = [
     title: "RapidResponse AI",
     image:
       "firetruck2.jpg",
+    site: "https://rapid-response-ai.vercel.app/",
     fullDescription: `A comprehensive emergency response intelligence system that autonomously detects wildfires using NASA satellite data and generates complete response plans in under 60 seconds. Built with Python Flask, React, and multi-agent AI architecture, the platform provides emergency managers with critical decision-making support before the first 911 call arrives. The system integrates real-time satellite imagery, weather data, and geographic information to deliver actionable emergency plans with evacuation routes, resource allocation, and multi-language communication templates. Key features include:
 
                       • Proactive wildfire detection using NASA FIRMS satellite API integration
@@ -47,22 +48,17 @@ const projectData = [
   {
     id: "3",
     title: "Weather Forecast Dashboard",
-    image:
-      "https://images.unsplash.com/photo-1592210454359-9043f067919b?w=800&h=500&fit=crop",
-    fullDescription: `A comprehensive weather dashboard application that provides users with detailed weather information and forecasts for locations worldwide. The application integrates with multiple weather APIs to deliver accurate and up-to-date information.
+    image: "pomodoro.jpg",
+    site: "https://pomotask-eta.vercel.app/",
+    fullDescription: `PomoTask is an interactive web application that helps you focus by following the Pomodoro technique, segmenting work time into focus sessions, short breaks, and long breaks. The Pomodoro technique has been scientifically shown to boost productivity and offer mood benefits. Built with React, the platform features Pomodoro timers that automatically transition between focus and break phases. The system tracks the completed focus sessions and schedules long breaks after every fourth session as per the technique. Key features include:
 
-• Integration with OpenWeatherMap API for real-time data
-• 7-day weather forecast with hourly breakdowns
-• Interactive charts using Recharts for data visualization
-• Geolocation support for automatic location detection
-• Location search with autocomplete functionality
-• Weather alerts and severe weather warnings
-• Save favorite locations for quick access
-• Responsive design optimized for all devices
-• Dark mode support for comfortable viewing
+                      • An integrated task queue with CRUD operations for the task list that includes completion tracking.
+                      • Customizable timer phases.
+                      • Visual tracking through completion dots to monitor how many sessions until a long break.
+                      • A complete task management system to plan your focus sessions.
 
-This project showcases my ability to work with external APIs, create dynamic data visualizations, implement responsive designs, and provide excellent user experience through thoughtful interface design.`,
-    tech: ["React", "OpenWeatherMap API", "Recharts", "Tailwind CSS"],
+                      This project demonstrates expertise in building, and deploying interactive React webpages that offer an intuitive user experiences.`,
+    tech: ["React", "JavaScript", "HTML", "CSS"],
     github: "https://github.com/yourusername/weather-dashboard",
   },
 ];
@@ -73,6 +69,7 @@ const modalImage = document.getElementById("modal-image");
 const modalDescription = document.getElementById("modal-description");
 const modalTech = document.getElementById("modal-tech");
 const modalGithub = document.getElementById("modal-github");
+const modalSite = document.getElementById("modal-site");
 const modalClose = document.getElementById("modal-close");
 
 function closeModal() {
@@ -89,6 +86,14 @@ function openModal(projectId) {
   modalDescription.textContent = project.fullDescription;
   modalTech.innerHTML = project.tech.map((tech) => `<span>${tech}</span>`).join("");
   modalGithub.href = project.github;
+  if (modalSite) {
+    if (project.site) {
+      modalSite.href = project.site;
+      modalSite.hidden = false;
+    } else {
+      modalSite.hidden = true;
+    }
+  }
   modal.classList.add("open");
   document.body.classList.add("modal-open");
 }
@@ -134,8 +139,163 @@ if (storedTheme === "dark") {
   root.classList.remove("dark");
 }
 
+const particleField = initParticleField();
+
 const themeToggle = document.querySelector("[data-theme-toggle]");
 themeToggle.addEventListener("click", () => {
   const isDark = root.classList.toggle("dark");
   localStorage.setItem(THEME_KEY, isDark ? "dark" : "light");
+  particleField?.updatePalette();
 });
+
+function initParticleField() {
+  const canvas = document.getElementById("particle-canvas");
+  if (!canvas) return null;
+
+  class ParticleField {
+    constructor(canvasElement) {
+      this.canvas = canvasElement;
+      this.ctx = this.canvas.getContext("2d");
+      this.particles = [];
+      this.config = {
+        maxParticles: 140,
+        density: 11000,
+        speed: 0.35,
+        linkDistance: 140,
+        size: { min: 0.6, max: 2.4 },
+      };
+      this.resize = this.resize.bind(this);
+      window.addEventListener("resize", this.resize);
+      this.resize();
+      this.updatePalette();
+      this.animate();
+    }
+
+    updatePalette() {
+      const styles = getComputedStyle(document.documentElement);
+      this.palette = {
+        particle: normalizeColor(styles.getPropertyValue("--text"), 0.18),
+        link: normalizeColor(styles.getPropertyValue("--accent"), 0.35),
+      };
+    }
+
+    resize() {
+      this.canvas.width = window.innerWidth;
+      this.canvas.height = window.innerHeight;
+      this.createParticles();
+    }
+
+    createParticles() {
+      const area = this.canvas.width * this.canvas.height;
+      const targetCount = Math.min(
+        this.config.maxParticles,
+        Math.floor(area / this.config.density)
+      );
+      this.particles = Array.from({ length: targetCount }, () =>
+        this.spawnParticle()
+      );
+    }
+
+    spawnParticle() {
+      return {
+        x: Math.random() * this.canvas.width,
+        y: Math.random() * this.canvas.height,
+        vx: (Math.random() - 0.5) * this.config.speed,
+        vy: (Math.random() - 0.5) * this.config.speed,
+        size:
+          Math.random() * (this.config.size.max - this.config.size.min) +
+          this.config.size.min,
+      };
+    }
+
+    updateParticle(particle) {
+      particle.x += particle.vx;
+      particle.y += particle.vy;
+
+      if (particle.x < -50) particle.x = this.canvas.width + 50;
+      if (particle.x > this.canvas.width + 50) particle.x = -50;
+      if (particle.y < -50) particle.y = this.canvas.height + 50;
+      if (particle.y > this.canvas.height + 50) particle.y = -50;
+    }
+
+    drawParticle(particle) {
+      this.ctx.beginPath();
+      this.ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+      this.ctx.fillStyle = this.palette.particle;
+      this.ctx.fill();
+    }
+
+    connectParticle(particle, index) {
+      for (let i = index + 1; i < this.particles.length; i += 1) {
+        const other = this.particles[i];
+        const dx = particle.x - other.x;
+        const dy = particle.y - other.y;
+        const distance = Math.hypot(dx, dy);
+        if (distance > this.config.linkDistance) continue;
+
+        const opacity =
+          0.5 - (distance / this.config.linkDistance) * 0.5 + 0.05;
+        this.ctx.globalAlpha = Math.max(0.08, Math.min(0.45, opacity));
+        this.ctx.strokeStyle = this.palette.link;
+        this.ctx.lineWidth = 0.8;
+        this.ctx.beginPath();
+        this.ctx.moveTo(particle.x, particle.y);
+        this.ctx.lineTo(other.x, other.y);
+        this.ctx.stroke();
+      }
+      this.ctx.globalAlpha = 1;
+    }
+
+    animate() {
+      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      this.particles.forEach((particle, index) => {
+        this.updateParticle(particle);
+        this.drawParticle(particle);
+        this.connectParticle(particle, index);
+      });
+      requestAnimationFrame(() => this.animate());
+    }
+  }
+
+  function normalizeColor(value, alpha) {
+    const color = value ? value.trim() : "";
+    if (!color) {
+      return `rgba(255, 255, 255, ${alpha})`;
+    }
+
+    if (color.startsWith("#")) {
+      return hexToRgba(color, alpha);
+    }
+
+    if (color.startsWith("rgb")) {
+      const numericValues = color
+        .replace(/[^\d.,]/g, "")
+        .split(",")
+        .map((num) => Number(num.trim()));
+      const [r = 255, g = 255, b = 255] = numericValues;
+      return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+    }
+
+    return color;
+  }
+
+  function hexToRgba(hex, alpha) {
+    let processed = hex.replace("#", "");
+    if (processed.length === 3) {
+      processed = processed
+        .split("")
+        .map((char) => char + char)
+        .join("");
+    }
+    const intValue = parseInt(processed, 16);
+    if (Number.isNaN(intValue)) {
+      return `rgba(255, 255, 255, ${alpha})`;
+    }
+    const r = (intValue >> 16) & 255;
+    const g = (intValue >> 8) & 255;
+    const b = intValue & 255;
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+  }
+
+  return new ParticleField(canvas);
+}
